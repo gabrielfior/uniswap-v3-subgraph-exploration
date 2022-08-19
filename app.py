@@ -19,7 +19,7 @@ def read_root():
 @app.get("/asset_id/{asset_id}/pools")
 def read_pools_from_asset(asset_id: str):
     query = gql(QUERY_READ_POOLS_QUERY)
-    params = {"assetId": asset_id}
+    params = {"assetId": asset_id.lower()}
     result = client.execute(query, variable_values=params)
     
     # merge two pools (token0 or token1 might equal assetId)
